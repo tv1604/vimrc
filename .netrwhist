@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/tuevo/Projects/webapps/pan/app/Modules/UserSetting'
+let g:netrw_dirhist_2='/Users/tuevo/Projects/webapps/pan/docker/php-worker'
+let g:netrw_dirhist_3='/Users/tuevo/Projects/webapps/pan/app/Modules/UserSetting'
+let g:netrw_dirhist_4='/Users/tuevo/Projects/webapps/pan/vendor/dingo/api/src/Provider'
+let g:netrw_dirhist_5='/Users/tuevo/Projects/webapps/pan/app/Modules/UserSetting'
+let g:netrw_dirhist_6='/Users/tuevo/Projects/webapps/pan/app/Modules/UserSetting/Tests'
+let g:netrw_dirhist_7='/Users/tuevo/Projects/webapps/pan/app/Modules/UserSetting'
