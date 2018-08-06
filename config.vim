@@ -15,6 +15,7 @@ nmap     <leader>l :ls<cr>
 nmap     <leader>q :Bdelete<cr>
 nmap     <leader>n :tn<cr>
 nmap     <leader>c :ccl<cr>
+nmap     <C-G> <C-]>
 noremap  <silent>  <C-S> :update<cr>
 vnoremap <silent>  <C-S> <C-C>:update<cr>
 inoremap <silent>  <C-S> <C-O>:update<cr>
@@ -45,6 +46,9 @@ let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_working_path_mode = 'ar'
 let g:php_namespace_sort_after_insert = 1
 
+" Improve performance ctrlp with ctrp-py-matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
 " Ale configuration "
 let g:ale_linters = {'php': ['php']}
 let g:ale_lint_on_save = 1
@@ -65,30 +69,22 @@ if executable('ag')
   endif
 endif
 
-" Theme "
-if (has("termguicolors"))
-    set termguicolors
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
-try
-    colorscheme OceanicNext
-catch
-endtry
-
-" Airline "
-let g:airline_theme='oceanicnext'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+" Theme "
+syntax on
+set termguicolors
+let ayucolor="mirage"
+colorscheme ayu
 
 " Load php document "
 " filetype on
 " autocmd FileType php set keywordprg=pman
-
-" Override "
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
@@ -96,12 +92,7 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
-
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" Without these mappings, `n` & `N` works fine. (These mappings just provide
-" different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+let g:loaded_nerdtree_git_status = 1
 
 " Performance in vim"
 set cursorline!
@@ -113,6 +104,10 @@ set cul!
 set nofoldenable
 set foldmethod=indent
 syntax sync minlines=256
+set timeoutlen=1000
+set ttimeoutlen=0
+set re=1
+let g:vue_disable_pre_processors=1
 
 " auto move back to normal model "
 au CursorHoldI * stopinsert
@@ -126,3 +121,32 @@ hi TabLineSel  cterm=none ctermfg=black ctermbg=white
 
 " syntax hightlight vue
 autocmd FileType vue syntax sync fromstart
+
+" Enable phpcstags
+let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
+let g:tagbar_phpctags_memory_limit='512M'
+
+" vim-php-cs-fixer
+nnoremap <silent><leader>f :call PhpCsFixerFixFile()<CR>
+
+" vim-php-namespace
+nnoremap <Leader>a :call PhpInsertUse()<CR>
+let g:php_namespace_sort_after_insert = 1
+
+" hard mode
+" noremap <Up> <Nop>
+" noremap <Down> <Nop>
+" noremap <Left> <Nop>
+" noremap <Right> <Nop>
+inoremap jj <ESC>
+
+" plantuml
+" autocmd BufWrite *.uml silent! !plantuml -tsvg %
+let g:plantuml_executable_script='plantuml'
+
+" Utilsnip
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
