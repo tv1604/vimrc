@@ -1,6 +1,8 @@
-
-let g:NERDTreeWinPos = "left"
 let mapleader = "'"
+let g:NERDTreeWinPos = "left"
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let NERDTreeAutoDeleteBuffer = 1
 
 map      <F2>      :NERDTreeFind<cr>
 map      <F2><F2>  :NERDTreeToggle<cr>
@@ -9,7 +11,7 @@ nnoremap <F5>      :DeleteHiddenBuffers<cr>
 nnoremap <F8>      :TagbarToggle<cr>
 
 map      <C-D> <C-W>v<cr>
-nmap     <leader>e :Explore<cr>
+nmap     <leader>e :Vexplore<cr>
 nmap     <leader>t :terminal<cr>
 nmap     <leader>l :ls<cr>
 nmap     <leader>q :Bdelete<cr>
@@ -31,7 +33,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
 set wildignore+=node_modules/*,bower_components/*
-set tags=./tags;/
+set tags=./tags,tags;/
 
 " Enable git gutter as default "
 let g:gitgutter_enabled = 1
@@ -82,10 +84,6 @@ set termguicolors
 let ayucolor="mirage"
 colorscheme ayu
 
-" Load php document "
-" filetype on
-" autocmd FileType php set keywordprg=pman
-
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
@@ -94,25 +92,30 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:loaded_nerdtree_git_status = 1
 
-" Performance in vim"
-set cursorline!
-set nolazyredraw
+" General and Performance in vim "
+syntax sync minlines=300
+set lazyredraw
 set noshowcmd
 set synmaxcol=128
 set ttyfast
 set cul!
+set nu
+set nocp
+set ruler
+set wildmenu
 set nofoldenable
 set foldmethod=indent
-syntax sync minlines=256
 set timeoutlen=1000
 set ttimeoutlen=0
 set re=1
-let g:vue_disable_pre_processors=1
+
+" let g:vue_disable_pre_processors=1
 
 " auto move back to normal model "
-au CursorHoldI * stopinsert
+" au CursorHoldI * stopinsert
 
 filetype plugin on
+filetype plugin indent on
 
 " Tabbar configuration
 hi TabLineFill cterm=none ctermfg=grey  ctermbg=cyan
@@ -121,6 +124,7 @@ hi TabLineSel  cterm=none ctermfg=black ctermbg=white
 
 " syntax hightlight vue
 autocmd FileType vue syntax sync fromstart
+autocmd FileType markdown setlocal syntax=off spell
 
 " Enable phpcstags
 let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
@@ -130,8 +134,8 @@ let g:tagbar_phpctags_memory_limit='512M'
 nnoremap <silent><leader>f :call PhpCsFixerFixFile()<CR>
 
 " vim-php-namespace
-nnoremap <Leader>a :call PhpInsertUse()<CR>
-let g:php_namespace_sort_after_insert = 1
+" nnoremap <Leader>a :call PhpInsertUse()<CR>
+" let g:php_namespace_sort_after_insert = 1
 
 " hard mode
 " noremap <Up> <Nop>
@@ -150,3 +154,7 @@ let g:SuperTabCrMapping                = 0
 let g:UltiSnipsExpandTrigger           = '<tab>'
 let g:UltiSnipsJumpForwardTrigger      = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+
+aug Ws
+   au!
+aug END

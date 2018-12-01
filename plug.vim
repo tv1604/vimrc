@@ -1,4 +1,3 @@
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'FelikZ/ctrlp-py-matcher'
@@ -35,5 +34,6 @@ Plug 'ronakg/quickr-preview.vim'
 Plug 'hyiltiz/vim-plugins-profile'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'SirVer/ultisnips'
+Plug 'scrooloose/vim-slumlord'
 
 call plug#end()
