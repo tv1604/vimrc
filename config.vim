@@ -9,26 +9,23 @@ map      <F2><F2>  :NERDTreeToggle<cr>
 nmap     <F3>      :bn<cr>
 nnoremap <F5>      :DeleteHiddenBuffers<cr>
 nnoremap <F8>      :TagbarToggle<cr>
+nnoremap <silent>  <Esc><Esc> :nohl<cr>
 
 map      <C-D> <C-W>v<cr>
-nmap     <leader>e :Vexplore<cr>
-nmap     <leader>t :terminal<cr>
-nmap     <leader>l :ls<cr>
-nmap     <leader>q :Bdelete<cr>
-nmap     <leader>n :tn<cr>
-nmap     <leader>c :ccl<cr>
 nmap     <C-G> <C-]>
+nmap     <silent>  <Esc><Esc> :ccl<cr>
 noremap  <silent>  <C-S> :update<cr>
 vnoremap <silent>  <C-S> <C-C>:update<cr>
 inoremap <silent>  <C-S> <C-O>:update<cr>
 nnoremap <leader>. :CtrlPTag<cr>
 nnoremap ; :
+nnoremap . :b<space>
+nmap ff <plug>(quickr_preview)
 
 set mouse=a
 set confirm
 set list
 set listchars=tab:!·,trail:·
-set number
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
@@ -137,11 +134,6 @@ nnoremap <silent><leader>f :call PhpCsFixerFixFile()<CR>
 " nnoremap <Leader>a :call PhpInsertUse()<CR>
 " let g:php_namespace_sort_after_insert = 1
 
-" hard mode
-" noremap <Up> <Nop>
-" noremap <Down> <Nop>
-" noremap <Left> <Nop>
-" noremap <Right> <Nop>
 inoremap jj <ESC>
 
 " plantuml

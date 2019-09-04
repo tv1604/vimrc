@@ -25,15 +25,12 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'w0rp/ale'
 Plug 'yggdroot/indentline'
-Plug 'aklt/plantuml-syntax'
 Plug 'tyru/open-browser.vim'
-Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'ronakg/quickr-preview.vim'
 Plug 'hyiltiz/vim-plugins-profile'
 Plug 'stephpy/vim-php-cs-fixer'
-Plug 'SirVer/ultisnips'
 Plug 'scrooloose/vim-slumlord'
+Plug 'ronakg/quickr-preview.vim'
 
 call plug#end()
