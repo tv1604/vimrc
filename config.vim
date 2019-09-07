@@ -7,9 +7,14 @@ let NERDTreeAutoDeleteBuffer = 1
 map      <F2>      :NERDTreeFind<cr>
 map      <F2><F2>  :NERDTreeToggle<cr>
 nmap     <F3>      :bn<cr>
+nmap     <C-L>     :tabnext<cr>
+nnoremap <C-H>     :tabprevious<cr>
+nnoremap <C-N>     :tabnew<cr>
+nnoremap <C-T>     :terminal<cr>
 nnoremap <F5>      :DeleteHiddenBuffers<cr>
 nnoremap <F8>      :TagbarToggle<cr>
 nnoremap <silent>  <Esc><Esc> :nohl<cr>
+
 
 map      <C-D> <C-W>v<cr>
 nmap     <C-G> <C-]>
@@ -24,6 +29,7 @@ nmap ff <plug>(quickr_preview)
 
 set mouse=a
 set confirm
+set nonumber
 set list
 set listchars=tab:!·,trail:·
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -32,6 +38,7 @@ set wildignore+=*.pdf,*.psd
 set wildignore+=node_modules/*,bower_components/*
 set tags=./tags,tags;/
 
+" "
 " Enable git gutter as default "
 let g:gitgutter_enabled = 1
 
@@ -96,7 +103,6 @@ set noshowcmd
 set synmaxcol=128
 set ttyfast
 set cul!
-set nu
 set nocp
 set ruler
 set wildmenu
@@ -146,6 +152,28 @@ let g:SuperTabCrMapping                = 0
 let g:UltiSnipsExpandTrigger           = '<tab>'
 let g:UltiSnipsJumpForwardTrigger      = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+
+
+" If you use php-cs-fixer version 1.x
+let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
+let g:php_cs_fixer_config = "default"                  " options: --config
+" If you want to define specific fixers:
+"let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
+"let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
+" End of php-cs-fixer version 1 config params
+
+" If you use php-cs-fixer version 2.x
+let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
+"let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
+"let g:php_cs_fixer_config_file = '.php_cs' " options: --config
+" End of php-cs-fixer version 2 config params
+
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
+let p:peepopen_quit = 1
 
 aug Ws
    au!
