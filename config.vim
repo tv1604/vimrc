@@ -7,25 +7,26 @@ let NERDTreeAutoDeleteBuffer = 1
 map      <F2>      :NERDTreeFind<cr>
 map      <F2><F2>  :NERDTreeToggle<cr>
 nmap     <F3>      :bn<cr>
-nmap     <C-L>     :tabnext<cr>
-nnoremap <C-H>     :tabprevious<cr>
-nnoremap <C-N>     :tabnew<cr>
+nmap     <C-C>     <cr>
 nnoremap <C-T>     :terminal<cr>
+nnoremap <C-K>     :tabnext<cr>
+nnoremap <C-J>     :tabprevious<cr>
+nnoremap <C-N>     :tabnew<cr>
+nnoremap <C-Q>     :q<cr>
 nnoremap <F5>      :DeleteHiddenBuffers<cr>
 nnoremap <F8>      :TagbarToggle<cr>
 nnoremap <silent>  <Esc><Esc> :nohl<cr>
 
-
-map      <C-D> <C-W>v<cr>
-nmap     <C-G> <C-]>
+map      <C-S>     :!
+nmap     f         <Plug>(easymotion-w)
+map      <C-D>     <C-W>v<cr>
+map      <C-A>     :sp <cr>
+nmap     <C-G>     <C-]>
 nmap     <silent>  <Esc><Esc> :ccl<cr>
-noremap  <silent>  <C-S> :update<cr>
-vnoremap <silent>  <C-S> <C-C>:update<cr>
-inoremap <silent>  <C-S> <C-O>:update<cr>
 nnoremap <leader>. :CtrlPTag<cr>
 nnoremap ; :
 nnoremap . :b<space>
-nmap ff <plug>(quickr_preview)
+nmap     vv <plug>(quickr_preview)
 
 set mouse=a
 set confirm
@@ -125,26 +126,17 @@ hi TabLineFill cterm=none ctermfg=grey  ctermbg=cyan
 hi TabLine     cterm=none ctermfg=white ctermbg=cyan
 hi TabLineSel  cterm=none ctermfg=black ctermbg=white
 
-" syntax hightlight vue
-autocmd FileType vue syntax sync fromstart
-autocmd FileType markdown setlocal syntax=off spell
 
 " Enable phpcstags
 let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
 let g:tagbar_phpctags_memory_limit='512M'
 
-" vim-php-cs-fixer
-nnoremap <silent><leader>f :call PhpCsFixerFixFile()<CR>
 
 " vim-php-namespace
 " nnoremap <Leader>a :call PhpInsertUse()<CR>
 " let g:php_namespace_sort_after_insert = 1
 
 inoremap jj <ESC>
-
-" plantuml
-" autocmd BufWrite *.uml silent! !plantuml -tsvg %
-let g:plantuml_executable_script='plantuml'
 
 " Utilsnip
 let g:SuperTabDefaultCompletionType    = '<C-n>'
@@ -153,27 +145,15 @@ let g:UltiSnipsExpandTrigger           = '<tab>'
 let g:UltiSnipsJumpForwardTrigger      = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
 
+let g:notes_directories = ['~/Documents/Notes']
+let g:notes_suffix = '.md'
 
-" If you use php-cs-fixer version 1.x
-let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
-let g:php_cs_fixer_config = "default"                  " options: --config
-" If you want to define specific fixers:
-"let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
-"let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
-" End of php-cs-fixer version 1 config params
-
-" If you use php-cs-fixer version 2.x
-let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
-"let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
-"let g:php_cs_fixer_config_file = '.php_cs' " options: --config
-" End of php-cs-fixer version 2 config params
-
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-
-let p:peepopen_quit = 1
+" Auto find and insert namespace
+autocmd FileType vue syntax sync fromstart
+autocmd FileType markdown setlocal syntax=off spell
+autocmd FileType php autocmd BufWritePre <buffer> :call PhpSortUse()
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType tf setlocal ts=2 sts=2 sw=2 expandtab
 
 aug Ws
    au!
