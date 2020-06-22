@@ -1,14 +1,10 @@
 let mapleader = "'"
-let g:NERDTreeWinPos = "left"
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-let NERDTreeAutoDeleteBuffer = 1
 
 map      <F2>      :NERDTreeFind<cr>
 map      <F2><F2>  :NERDTreeToggle<cr>
 nmap     <F3>      :bn<cr>
 nmap     <C-C>     <cr>
-nnoremap <C-T>     :terminal<cr>
+nnoremap <C-T>     :!<space>
 nnoremap <C-K>     :tabnext<cr>
 nnoremap <C-J>     :tabprevious<cr>
 nnoremap <C-N>     :tabnew<cr>
@@ -19,14 +15,17 @@ nnoremap <silent>  <Esc><Esc> :nohl<cr>
 
 map      <C-S>     :!
 nmap     f         <Plug>(easymotion-w)
-map      <C-D>     <C-W>v<cr>
+map      <C-D>     <C-W>s<cr>
 map      <C-A>     :sp <cr>
 nmap     <C-G>     <C-]>
 nmap     <silent>  <Esc><Esc> :ccl<cr>
+nnoremap g         go <cr>
 nnoremap <leader>. :CtrlPTag<cr>
 nnoremap ; :
 nnoremap . :b<space>
 nmap     vv <plug>(quickr_preview)
+
+inoremap jj <ESC>
 
 set mouse=a
 set confirm
@@ -85,9 +84,10 @@ endif
 
 " Theme "
 syntax on
-set termguicolors
-let ayucolor="mirage"
-colorscheme ayu
+" set termguicolors
+" let ayucolor="mirage"
+" colorscheme ayu
+colorscheme hashpunk-sw
 
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
@@ -95,6 +95,8 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
+let g:NERDTreeWinPos = "left"
+let g:NERDTreeAutoDeleteBuffer = 1
 let g:loaded_nerdtree_git_status = 1
 
 " General and Performance in vim "
@@ -126,17 +128,10 @@ hi TabLineFill cterm=none ctermfg=grey  ctermbg=cyan
 hi TabLine     cterm=none ctermfg=white ctermbg=cyan
 hi TabLineSel  cterm=none ctermfg=black ctermbg=white
 
-
 " Enable phpcstags
 let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
 let g:tagbar_phpctags_memory_limit='512M'
 
-
-" vim-php-namespace
-" nnoremap <Leader>a :call PhpInsertUse()<CR>
-" let g:php_namespace_sort_after_insert = 1
-
-inoremap jj <ESC>
 
 " Utilsnip
 let g:SuperTabDefaultCompletionType    = '<C-n>'
@@ -150,7 +145,7 @@ let g:notes_suffix = '.md'
 
 " Auto find and insert namespace
 autocmd FileType vue syntax sync fromstart
-autocmd FileType markdown setlocal syntax=off spell
+autocmd FileType markdown setlocal syntax=off nospell
 autocmd FileType php autocmd BufWritePre <buffer> :call PhpSortUse()
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType tf setlocal ts=2 sts=2 sw=2 expandtab
@@ -158,3 +153,8 @@ autocmd FileType tf setlocal ts=2 sts=2 sw=2 expandtab
 aug Ws
    au!
 aug END
+
+" Customize Lightline
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ }
