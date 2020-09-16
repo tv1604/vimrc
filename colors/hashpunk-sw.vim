@@ -23,12 +23,12 @@ let s:Purple4         =  ['55'  , '#5f00af']
 let s:SkyBlue1        =  ['117' , '#87afff']
 let s:Magenta2        =  ['165' , '#d700ff']
 let s:MediumOrchid1   =  ['207' , '#ff5faf']
-
+let s:Yellow          =  ['23'  , '#FFFF00']
 " Hashpunk-green
 let s:DeepSkyBlue3    =  ['31'  , '#0087af']
 
 let s:Chartreuse1     =  ['118' , '#87ff00']
-let s:RadicalRed2     =  ['198' , '#fe0040']
+let s:RadicalRed2     =  ['198' , '#ff0000']
 
 let s:Grey0           =  ['16'  , '#000000']
 let s:Grey7           =  ['233' , '#121212']
@@ -66,7 +66,7 @@ endfunction
 
 call s:highlight('Comment', s:Grey30, s:Grey0, s:bold)
 call s:highlight('Constant', s:Chartreuse1, s:clear, s:none)
-call s:highlight('String', s:Grey54, s:clear, s:none)
+call s:highlight('String', s:Grey42, s:clear, s:none)
 call s:highlight('Character', s:Grey93, s:clear, s:none)
 call s:highlight('Number', s:RadicalRed2, s:clear, s:none)
 call s:highlight('Boolean', s:RadicalRed2, s:clear, s:none)
@@ -104,14 +104,14 @@ call s:highlight('Error', s:Chartreuse1, s:clear, s:underline)
 call s:highlight('Todo', s:Chartreuse1, s:clear, s:none)
 
 call s:highlight('Directory', s:Grey93, s:clear, s:bold)
-call s:highlight('CursorLine', s:Chartreuse1, s:clear, s:bold)
+call s:highlight('CursorLine', s:clear, s:clear, s:bold)
 call s:highlight('MatchParen', s:Grey0, s:Chartreuse1, s:none)
 call s:highlight('ColorColumn', s:Chartreuse1, s:Grey15, s:none)
 
 
 " Interface highlighting
 call s:highlight('Normal', s:Grey93, s:Grey0, s:none)
-call s:highlight('Visual', s:clear, s:Grey66, s:none)
+call s:highlight('Visual', s:Grey0, s:Grey93, s:none)
 call s:highlight('Cursor', s:clear, s:Grey0, s:none)
 call s:highlight('iCursor', s:clear, s:Grey0, s:none)
 call s:highlight('LineNr', s:Grey66, s:clear, s:none)
@@ -121,10 +121,10 @@ call s:highlight('VertSplit', s:Grey15, s:clear, s:none)
 
 
 " Git Gutter
-call s:highlight('GitGutterAdd', s:Grey93, s:clear, s:none)
-call s:highlight('GitGutterChange', s:Grey93, s:clear, s:none)
-call s:highlight('GitGutterDelete', s:Grey93, s:clear, s:none)
-call s:highlight('GitGutterChangeDelete', s:Grey93, s:clear, s:none)
+call s:highlight('GitGutterAdd', s:Chartreuse1, s:clear, s:none)
+call s:highlight('GitGutterChange', s:Yellow, s:clear, s:none)
+call s:highlight('GitGutterDelete', s:RadicalRed2, s:clear, s:none)
+call s:highlight('GitGutterChangeDelete', s:RadicalRed2, s:clear, s:none)
 call s:highlight('SignColumn', s:Grey93, s:clear, s:none)
 
 

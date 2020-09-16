@@ -1,29 +1,51 @@
 let mapleader = "'"
 
+" Customize Lightline
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ }
+
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+
+nmap     e         :e<space>
 map      <F2>      :NERDTreeFind<cr>
 map      <F2><F2>  :NERDTreeToggle<cr>
 nmap     <F3>      :bn<cr>
+nmap     <C-Y>     :%y+<cr>
 nmap     <C-C>     <cr>
 nnoremap <C-T>     :!<space>
 nnoremap <C-K>     :tabnext<cr>
 nnoremap <C-J>     :tabprevious<cr>
 nnoremap <C-N>     :tabnew<cr>
-nnoremap <C-Q>     :q<cr>
+nnoremap <C-Q>     :call ToggleHiddenAll()<CR>
 nnoremap <F5>      :DeleteHiddenBuffers<cr>
 nnoremap <F8>      :TagbarToggle<cr>
-nnoremap <silent>  <Esc><Esc> :nohl<cr>
+nmap     <silent>   <esc> :nohlsearch<cr>
 
 map      <C-S>     :!
-nmap     f         <Plug>(easymotion-w)
-map      <C-D>     <C-W>s<cr>
+map      <C-D>     <C-W>v<cr>
 map      <C-A>     :sp <cr>
 nmap     <C-G>     <C-]>
-nmap     <silent>  <Esc><Esc> :ccl<cr>
 nnoremap g         go <cr>
 nnoremap <leader>. :CtrlPTag<cr>
 nnoremap ; :
-nnoremap . :b<space>
-nmap     vv <plug>(quickr_preview)
+nnoremap q :b<space>
+nmap     f <plug>(quickr_preview)
 
 inoremap jj <ESC>
 
@@ -149,12 +171,10 @@ autocmd FileType markdown setlocal syntax=off nospell
 autocmd FileType php autocmd BufWritePre <buffer> :call PhpSortUse()
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType tf setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType tpl syntax smarty
 
 aug Ws
    au!
 aug END
 
-" Customize Lightline
-let g:lightline = {
-      \ 'colorscheme': 'default',
-      \ }
+

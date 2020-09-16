@@ -33,5 +33,6 @@ Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'yggdroot/indentline'
+Plug 'blueyed/smarty.vim'
 
 call plug#end()
