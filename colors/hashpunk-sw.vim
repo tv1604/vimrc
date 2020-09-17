@@ -126,6 +126,8 @@ call s:highlight('GitGutterChange', s:Yellow, s:clear, s:none)
 call s:highlight('GitGutterDelete', s:RadicalRed2, s:clear, s:none)
 call s:highlight('GitGutterChangeDelete', s:RadicalRed2, s:clear, s:none)
 call s:highlight('SignColumn', s:Grey93, s:clear, s:none)
+call s:highlight("diffAdded", s:Chartreuse1, s:clear, s:none)
+call s:highlight("diffRemoved", s:RadicalRed2, s:clear, s:none)
 
 
 " Java syntax highlighting

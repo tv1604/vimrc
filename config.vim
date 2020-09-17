@@ -25,30 +25,25 @@ endfunction
 nmap     e         :e<space>
 map      <F2>      :NERDTreeFind<cr>
 map      <F2><F2>  :NERDTreeToggle<cr>
-nmap     <F3>      :bn<cr>
 nmap     <C-Y>     :%y+<cr>
 nmap     <C-C>     <cr>
-nnoremap <C-T>     :!<space>
-nnoremap <C-K>     :tabnext<cr>
-nnoremap <C-J>     :tabprevious<cr>
-nnoremap <C-N>     :tabnew<cr>
+nnoremap <C-T>     :tabnew<cr>
+nnoremap <C-J>     :tabnext<cr>
 nnoremap <C-Q>     :call ToggleHiddenAll()<CR>
-nnoremap <F5>      :DeleteHiddenBuffers<cr>
-nnoremap <F8>      :TagbarToggle<cr>
+nnoremap <F3>      :DeleteHiddenBuffers<cr>
 nmap     <silent>   <esc> :nohlsearch<cr>
 
 map      <C-S>     :!
 map      <C-D>     <C-W>v<cr>
 map      <C-A>     :sp <cr>
 nmap     <C-G>     <C-]>
-nnoremap g         go <cr>
-nnoremap <leader>. :CtrlPTag<cr>
 nnoremap ; :
 nnoremap q :b<space>
 nmap     f <plug>(quickr_preview)
 
 inoremap jj <ESC>
 
+set noshowcmd
 set mouse=a
 set confirm
 set nonumber
