@@ -1,48 +1,34 @@
 let mapleader = "'"
+let g:quickr_preview_keymaps = 0
 
 " Customize Lightline
 let g:lightline = {
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'darcula',
       \ }
 
 let s:hidden_all = 0
-function! ToggleHiddenAll()
-    if s:hidden_all  == 0
-        let s:hidden_all = 1
-        set noshowmode
-        set noruler
-        set laststatus=0
-        set noshowcmd
-    else
-        let s:hidden_all = 0
-        set showmode
-        set ruler
-        set laststatus=2
-        set showcmd
-    endif
-endfunction
 
-nmap     e         :e<space>
-map      <F2>      :NERDTreeFind<cr>
-map      <F2><F2>  :NERDTreeToggle<cr>
+map  <nowait> e    :e<space>
+map  <nowait> r    :w<cr>
+" map  <nowait> g    :cn<cr>
+" map  <nowait> gg   :cp<cr>
+map  <nowait> <silent> c    :NERDTreeFind<cr>
+map  <nowait> <silent> cc   :NERDTreeToggle<cr>
 nmap     <C-Y>     :%y+<cr>
-nmap     <C-C>     <cr>
-nnoremap <C-T>     :tabnew<cr>
-nnoremap <C-J>     :tabnext<cr>
-nnoremap <C-Q>     :call ToggleHiddenAll()<CR>
+map      <C-C>     :G
 nnoremap <F3>      :DeleteHiddenBuffers<cr>
-nmap     <silent>   <esc> :nohlsearch<cr>
-
-map      <C-S>     :!
-map      <C-D>     <C-W>v<cr>
-map      <C-A>     :sp <cr>
-nmap     <C-G>     <C-]>
+nmap <nowait> <silent> <esc> :nohlsearch<cr>
+map  <nowait> <C-D>     <C-W>v<cr>
+map  <nowait> <C-A>     :sp <cr>
 nnoremap ; :
-nnoremap q :b<space>
-nmap     f <plug>(quickr_preview)
+map  <nowait> w    :b<space>
+map  <nowait> q    :q<cr>
+
+let g:quickr_preview_position = 'above'
 
 inoremap jj <ESC>
 
+set noshowmode
 set noshowcmd
 set mouse=a
 set confirm
@@ -68,6 +54,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_working_path_mode = 'ar'
 let g:php_namespace_sort_after_insert = 1
+let g:phpstan_analyse_level = 1
 
 " Improve performance ctrlp with ctrp-py-matcher
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
@@ -149,13 +136,17 @@ hi TabLineSel  cterm=none ctermfg=black ctermbg=white
 let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
 let g:tagbar_phpctags_memory_limit='512M'
 
+" Ignore matching
+let g:matchparen_timeout = 2
+let g:matchparen_insert_timeout = 2
+
 
 " Utilsnip
-let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
-let g:UltiSnipsExpandTrigger           = '<tab>'
-let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+" let g:SuperTabDefaultCompletionType    = '<C-n>'
+" let g:SuperTabCrMapping                = 0
+" let g:UltiSnipsExpandTrigger           = '<tab>'
+" let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
 
 let g:notes_directories = ['~/Documents/Notes']
 let g:notes_suffix = '.md'
@@ -172,4 +163,34 @@ aug Ws
    au!
 aug END
 
+let g:vimade = {}
+let g:vimade.fadelevel = 0.5
+let g:vimade.enablesigns = 1
 
+command! Ctabs call s:Ctabs()
+function! s:Ctabs()
+  let files = {}
+  for entry in getqflist()
+    let filename = bufname(entry.bufnr)
+    let files[filename] = 1
+  endfor
+
+  for file in keys(files)
+    silent exe "tabedit ".file
+  endfor
+endfunction
+
+" COC
+let g:coc_disable_startup_warning = 1
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+set pumheight=10

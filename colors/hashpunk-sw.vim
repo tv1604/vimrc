@@ -21,16 +21,20 @@ let s:clear           =  ['NONE', 'NONE'   ]
 let s:DarkMagenta     =  ['90'  , '#870087']
 let s:Purple4         =  ['55'  , '#5f00af']
 let s:SkyBlue1        =  ['117' , '#87afff']
-let s:Magenta2        =  ['165' , '#d700ff']
+let s:Magenta2        =  ['165' , '#87afff']
 let s:MediumOrchid1   =  ['207' , '#ff5faf']
-let s:Yellow          =  ['23'  , '#FFFF00']
+let s:Yellow          =  ['170' , '#FFFF00']
 " Hashpunk-green
 let s:DeepSkyBlue3    =  ['31'  , '#0087af']
 
-let s:Chartreuse1     =  ['118' , '#87ff00']
+let s:Green           =  ['46'  , '#87ff00']
+let s:Chartreuse1     =  ['46'  , '#87ff00']
 let s:RadicalRed2     =  ['198' , '#ff0000']
+let s:Red             =  ['198' , '#ff0000']
+let s:Blue            =  ['21'  , '#0000ff']
 
-let s:Grey0           =  ['16'  , '#000000']
+let s:Black           =  ['0'  , '#000000']
+let s:Grey0           =  ['0'  , '#000000']
 let s:Grey7           =  ['233' , '#121212']
 let s:Grey15          =  ['235' , '#262626']
 let s:Grey19          =  ['236' , '#303030']
@@ -41,6 +45,8 @@ let s:Grey66          =  ['248' , '#a8a8a8']
 let s:Grey74          =  ['250' , '#bcbcbc']
 let s:Grey82          =  ['252' , '#d0d0d0']
 let s:Grey93          =  ['255' , '#eeeeee']
+
+let s:White           =  ['255' , '#ffffff']
 
 " Text style
 let s:italic      =   'italic'
@@ -126,8 +132,12 @@ call s:highlight('GitGutterChange', s:Yellow, s:clear, s:none)
 call s:highlight('GitGutterDelete', s:RadicalRed2, s:clear, s:none)
 call s:highlight('GitGutterChangeDelete', s:RadicalRed2, s:clear, s:none)
 call s:highlight('SignColumn', s:Grey93, s:clear, s:none)
-call s:highlight("diffAdded", s:Chartreuse1, s:clear, s:none)
+" fugitive
+call s:highlight("diffAdded", s:Yellow, s:clear, s:none)
+call s:highlight("diffChange", s:Yellow, s:clear, s:none)
 call s:highlight("diffRemoved", s:RadicalRed2, s:clear, s:none)
+call s:highlight("diffDelete", s:RadicalRed2, s:clear, s:none)
+call s:highlight("diffText", s:Chartreuse1, s:clear, s:none)
 
 
 " Java syntax highlighting
@@ -146,7 +156,6 @@ call s:highlight('pythonBuiltin', s:Grey54, s:clear, s:italic)
 
 " Vimscript syntax highlighting
 call s:highlight('vimOption', s:Grey93, s:clear, s:none)
-
 
 " NERDTree
 call s:highlight('NERDTreeClosable', s:Chartreuse1, s:clear, s:none)
@@ -182,8 +191,13 @@ call s:highlight('elixirFunctionDeclaration', s:Grey66, s:clear, s:none)
 call s:highlight('goPackage', s:Magenta2, s:clear, s:italic)
 call s:highlight('goImport', s:Purple4, s:clear, s:italic)
 
-
 " Rust syntax highlighting
 " Requires plug: rust-lang/rust.vim
 "
 call s:highlight('rustMacro', s:MediumOrchid1, s:clear, s:none)
+
+" CoC
+call s:highlight("Pmenu",       s:Blue, s:Grey93, s:none)
+call s:highlight("PmenuSel",    s:Blue, s:Grey93, s:none)
+call s:highlight("PmenuThumb",  s:Blue, s:Grey93, s:none)
+

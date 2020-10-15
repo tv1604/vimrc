@@ -24,15 +24,17 @@ Plug 'mileszs/ack.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
 Plug 'raimondi/delimitmate'
-Plug 'ronakg/quickr-preview.vim'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'scrooloose/vim-slumlord'
 Plug 'tpope/vim-fugitive'
 Plug 'tyru/open-browser.vim'
 Plug 'vim-php/tagbar-phpctags.vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
 Plug 'yggdroot/indentline'
-Plug 'blueyed/smarty.vim'
+Plug 'tadaa/vimade'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'mhinz/vim-startify'
+Plug 'phpstan/vim-phpstan'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
