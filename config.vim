@@ -14,16 +14,13 @@ map  <nowait> r    :w<cr>
 " map  <nowait> gg   :cp<cr>
 map  <nowait> <silent> c    :NERDTreeFind<cr>
 map  <nowait> <silent> cc   :NERDTreeToggle<cr>
-nmap     <C-Y>     :%y+<cr>
-map      <C-C>     :G
 nnoremap <F3>      :DeleteHiddenBuffers<cr>
 nmap <nowait> <silent> <esc> :nohlsearch<cr>
 map  <nowait> <C-D>     <C-W>v<cr>
 map  <nowait> <C-A>     :sp <cr>
 nnoremap ; :
-map  <nowait> w    :b<space>
-map  <nowait> q    :q<cr>
-
+nmap  <nowait> w    :b<space>
+nmap  <nowait> q    :q<cr>
 let g:quickr_preview_position = 'above'
 
 inoremap jj <ESC>
@@ -92,6 +89,7 @@ syntax on
 " let ayucolor="mirage"
 " colorscheme ayu
 colorscheme hashpunk-sw
+" syntax enable
 
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
@@ -179,6 +177,11 @@ function! s:Ctabs()
     silent exe "tabedit ".file
   endfor
 endfunction
+
+" Terminal MODE
+tnoremap <Esc> <C-\><C-n>
+noremap <C-c> "*y
+noremap <C-v> "*p
 
 " COC
 let g:coc_disable_startup_warning = 1

@@ -36,5 +36,8 @@ Plug 'mhinz/vim-startify'
 Plug 'phpstan/vim-phpstan'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hashivim/vim-terraform'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+Plug 'tpope/vim-markdown'
 
 call plug#end()

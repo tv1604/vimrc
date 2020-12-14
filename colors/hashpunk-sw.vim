@@ -110,7 +110,7 @@ call s:highlight('Error', s:Chartreuse1, s:clear, s:underline)
 call s:highlight('Todo', s:Chartreuse1, s:clear, s:none)
 
 call s:highlight('Directory', s:Grey93, s:clear, s:bold)
-call s:highlight('CursorLine', s:clear, s:clear, s:bold)
+call s:highlight('CursorLine', s:clear, s:Grey7, s:bold)
 call s:highlight('MatchParen', s:Grey0, s:Chartreuse1, s:none)
 call s:highlight('ColorColumn', s:Chartreuse1, s:Grey15, s:none)
 
